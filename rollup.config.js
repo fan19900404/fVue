@@ -1,6 +1,7 @@
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 import uglify from 'rollup-plugin-uglify';
+import replace from 'rollup-plugin-replace';
 
 import { name, version, author } from './package.json';
 
@@ -25,6 +26,10 @@ export default [
     plugins: [
       resolve(),
       babel({}),
+      replace({
+        // 使用这种手段决定是使用哪种方法输出
+        'process.env.NODE_ENV': JSON.stringify('production'),
+      }),
       uglify({
         output: {
           preamble: banner,
@@ -40,6 +45,12 @@ export default [
       name: 'Vue',
       sourcemap: false,
     },
-    plugins: [resolve(), babel({})],
+    plugins: [
+      resolve(),
+      babel({}),
+      replace({
+        'process.env.NODE_ENV': JSON.stringify('development'),
+      }),
+    ],
   },
 ];
