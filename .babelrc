@@ -5,7 +5,7 @@
       {
         "modules": false,
         "targets": {
-          "browsers": ["chrome >= 50"]
+          "browsers": ["defaults"]
         }
       }
     ]
