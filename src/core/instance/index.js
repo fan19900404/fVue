@@ -1,3 +1,5 @@
+/* eslint-disable no-underscore-dangle */
+import { initMixin } from './init';
 import { warn } from '../util/index';
 
 /**
@@ -10,7 +12,9 @@ function Vue(options) {
   if (process.env.NODE_ENV !== 'production' && !(this instanceof Vue)) {
     warn('Vue is a constructor and should be called with the `new` keyword');
   }
-  console.log(options);
+  this._init(options);
 }
+
+initMixin(Vue); // 初始化Vue
 
 export default Vue;
