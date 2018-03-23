@@ -1,5 +1,5 @@
-const Vue = function () {
-  const a = 'Vue';
-  console.log(`我是${a}`);
-};
+// 全局vue入口文件
+import Vue from './core/index';
+
 export default Vue;
+
